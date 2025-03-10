@@ -3,6 +3,7 @@
 
 return {
   'nvim-neo-tree/neo-tree.nvim',
+  lazy = false,
   version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -11,15 +12,19 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<C-n>', ':Neotree toggle<CR>', desc = 'NeoTree toggle', silent = true },
   },
   opts = {
     filesystem = {
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ['<C-n>'] = 'close_window',
+          ['<C-s>'] = 'open_split',
+          ['<C-v>'] = 'open_vsplit',
+          ['/'] = 'noop',
         },
       },
+      hijack_netrw_behavior = 'open_current',
     },
   },
 }
