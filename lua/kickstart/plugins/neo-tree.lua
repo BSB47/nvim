@@ -9,6 +9,27 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
+    {
+      's1n7ax/nvim-window-picker', -- for open_with_window_picker keymaps
+      version = '2.*',
+      event = 'VeryLazy',
+      config = function()
+        require('window-picker').setup {
+          hint = 'floating-big-letter',
+          filter_rules = {
+            include_current_win = false,
+            -- filter using buffer options
+            bo = {
+              -- if the file type is one of following, the window will be ignored
+              filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
+
+              -- if the buffer type is one of following, the window will be ignored
+              buftype = { 'terminal', 'quickfix' },
+            },
+          },
+        }
+      end,
+    },
   },
   cmd = 'Neotree',
   keys = {
@@ -21,6 +42,7 @@ return {
           ['<C-n>'] = 'close_window',
           ['<C-s>'] = 'open_split',
           ['<C-v>'] = 'open_vsplit',
+          ['<CR>'] = 'open_with_window_picker',
           ['/'] = 'noop',
         },
       },

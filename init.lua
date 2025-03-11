@@ -28,6 +28,7 @@ if vim.fn.has 'wsl' then
     copy = {
       ['+'] = 'clip.exe',
       ['*'] = 'clip.exe',
+      ['"'] = 'clip.exe',
     },
     paste = {
       ['+'] = 'powershell.exe Get-Clipboard',
@@ -39,7 +40,7 @@ if vim.fn.has 'wsl' then
 
   vim.keymap.set({ 'n', 'v' }, 'y', '"+y', { noremap = true, silent = true })
 
-  vim.keymap.set({ 'n', 'v' }, 'p', '"+p', { noremap = true, silent = true })
+  -- vim.keymap.set({ 'n', 'v' }, 'p', '"+p', { noremap = true, silent = true })
 end
 
 vim.g.copilot_no_tab_map = true
@@ -885,6 +886,7 @@ require('lazy').setup({
     config = function()
       require('toggleterm').setup {}
       vim.keymap.set('n', '<M-i>', ':ToggleTerm direction=float<CR>')
+      vim.keymap.set('t', '<M-i>', '<cmd>ToggleTerm direction=float<CR>')
       vim.keymap.set('n', '<M-v>', ':ToggleTerm size=60 direction=vertical<CR>')
     end,
   },

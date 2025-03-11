@@ -14,7 +14,7 @@ iron.setup {
         command = { 'bash' },
       },
       python = {
-        command = { 'ipython', '--no-autoindent', '--no-confirm-exit' },
+        command = { 'python', '-m', 'IPython', '--no-autoindent', '--no-confirm-exit' },
         format = common.bracketed_paste_python,
         block_deviders = { '# %%', '#%%' },
       },
