@@ -552,7 +552,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = { capabilities = { offsetEncoding = { 'utf-16' } } },
         black = {},
         -- gopls = {},
         pyright = {},
@@ -862,7 +862,6 @@ require('lazy').setup({
 
   {
     'olimorris/codecompanion.nvim',
-    config = true,
     opts = {
       strategies = {
         chat = {
@@ -878,6 +877,10 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
+    config = function()
+      require('codecompanion').setup(opts)
+      vim.keymap.set('n', '<C-g><C-g>', ':CodeCompanionChat Toggle<CR>')
+    end,
   },
 
   {
