@@ -18,10 +18,11 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
--- vim.schedule(function()
---   vim.opt.clipboard = 'unnamedplus'
--- end)
-if vim.fn.has 'wsl' then
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
+if vim.fn.has 'wsl' == 1 then
   vim.g.clipboard = {
     name = 'win_clipboard',
     copy = {
@@ -865,26 +866,12 @@ require('lazy').setup({
   },
 
   {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    dependencies = {
-      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
-
-      { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
-    },
-    build = 'make tiktoken', -- Only on MacOS or Linux
-    opts = {
-      selection = function(source)
-        local select = require 'CopilotChat.select'
-        return select.visual(source)
-      end,
-      mappings = {
-        reset = {
-          normal = '<C-r>',
-          insert = '<C-r>',
-        },
-      },
-    },
-    -- See Commands section for default commands if you want to lazy load on them
+    'Robitx/gp.nvim',
+    config = function()
+      local conf = require 'custom.plugins.gp'
+      require('gp').setup(conf.opts)
+      conf.keymap()
+    end,
   },
 
   {

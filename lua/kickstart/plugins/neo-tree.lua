@@ -42,7 +42,7 @@ return {
           ['<C-n>'] = 'close_window',
           ['<C-s>'] = 'open_split',
           ['<C-v>'] = 'open_vsplit',
-          ['<CR>'] = 'open_with_window_picker',
+          ['<CR>'] = 'open',
           ['/'] = 'noop',
         },
       },
