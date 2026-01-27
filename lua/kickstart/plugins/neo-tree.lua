@@ -31,7 +31,7 @@ return {
       end,
     },
   },
-  cmd = 'Neotree',
+  lazy = false,
   keys = {
     { '<C-n>', ':Neotree toggle<CR>', desc = 'NeoTree toggle', silent = true },
   },
