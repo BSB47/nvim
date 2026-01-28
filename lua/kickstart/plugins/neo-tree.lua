@@ -31,7 +31,7 @@ return {
       end,
     },
   },
-  lazy = false,
+  cmd = 'Neotree',
   keys = {
     { '<C-n>', ':Neotree toggle<CR>', desc = 'NeoTree toggle', silent = true },
   },
@@ -42,7 +42,7 @@ return {
           ['<C-n>'] = 'close_window',
           ['<C-s>'] = 'open_split',
           ['<C-v>'] = 'open_vsplit',
-          ['<CR>'] = 'open',
+          ['<CR>'] = 'open_with_window_picker',
           ['/'] = 'noop',
         },
       },
